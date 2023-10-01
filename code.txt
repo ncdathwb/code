@@ -1,4 +1,7 @@
 import subprocess
 
-# Mở Notepad
-subprocess.Popen(["notepad.exe"])
+# Đường dẫn đến tệp thực thi của Chrome
+chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+
+# Mở Chrome
+subprocess.Popen([chrome_path])
