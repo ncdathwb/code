@@ -1,4 +1,10 @@
-from selenium import webdriver
+try:
+    from selenium import webdriver
+except ImportError:
+    print("Selenium not found. Installing...")
+    import subprocess
+    subprocess.check_call(["pip", "install", "selenium"])
+    print("Selenium installed successfully.")
 
 # Khởi tạo trình duyệt Chrome
 driver = webdriver.Chrome()
@@ -12,4 +18,5 @@ time.sleep(5)
 
 # Đóng trình duyệt
 driver.quit()
+
 
