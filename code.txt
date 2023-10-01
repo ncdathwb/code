@@ -1,16 +1,15 @@
-import requests
+from selenium import webdriver
 
-def get_public_ip():
-    try:
-        response = requests.get('https://api64.ipify.org?format=json')
-        data = response.json()
-        ip_address = data['ip']
-        return ip_address
-    except Exception as e:
-        print(f"Không thể lấy địa chỉ IP: {str(e)}")
+# Khởi tạo trình duyệt Chrome
+driver = webdriver.Chrome()
 
-if __name__ == "__main__":
-    public_ip = get_public_ip()
-    if public_ip:
-        print(f"Địa chỉ IP công khai của bạn là: {public_ip}")
+# Mở trang Facebook
+driver.get("https://www.facebook.com")
+
+# Đợi một khoảng thời gian (ví dụ: 5 giây)
+import time
+time.sleep(5)
+
+# Đóng trình duyệt
+driver.quit()
 
