@@ -1,7 +1,16 @@
-import subprocess
+import requests
 
-# Đường dẫn đến tệp thực thi của Chrome
-chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+def get_public_ip():
+    try:
+        response = requests.get('https://api64.ipify.org?format=json')
+        data = response.json()
+        ip_address = data['ip']
+        return ip_address
+    except Exception as e:
+        print(f"Không thể lấy địa chỉ IP: {str(e)}")
 
-# Mở Chrome
-subprocess.Popen([chrome_path])
+if __name__ == "__main__":
+    public_ip = get_public_ip()
+    if public_ip:
+        print(f"Địa chỉ IP công khai của bạn là: {public_ip}")
+
