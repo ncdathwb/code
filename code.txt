@@ -6,8 +6,12 @@ except ImportError:
     subprocess.check_call(["pip", "install", "selenium"])
     print("Selenium installed successfully.")
 
-# Khởi tạo trình duyệt Chrome
-driver = webdriver.Chrome()
+# Kiểm tra xem WebDriver của Chrome đã được cài đặt hay chưa
+try:
+    driver = webdriver.Chrome()
+except WebDriverException:
+    print("WebDriver for Chrome not found. Please download and install it.")
+    exit()
 
 # Mở trang Facebook
 driver.get("https://www.facebook.com")
